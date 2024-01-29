@@ -35,7 +35,7 @@ export const ProductsDetails = () => {
         <img
           src={product.images[0]}
           alt="img product"
-          className="w-full  object-contain mix-blend-darken  max-h-80  "
+          className="w-full  object-contain  max-h-80  "
         />
       </div>
       <div className="flex  flex-col my-24 justify-around">
@@ -55,7 +55,6 @@ export const ProductsDetails = () => {
           <Button product={product} text="Aggiungi al carrello" />
         </div>
       </div>
-      {/* ulteriori dettagli del prodotto */}
     </div>
   );
 };

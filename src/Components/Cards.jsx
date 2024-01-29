@@ -2,11 +2,16 @@ import { useState } from "react";
 import { useFetchApi } from "../fetch";
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
+import { useDispatch } from "react-redux";
+import { addVisited } from "../redux/productsSlice";
+import { ProductCarousel } from "./ProductCarousel";
 
 export const Cards = ({ products = [], searchQuery }) => {
   const [hoveredProductId, setHoveredProductId] = useState(null);
 
   const { isLoading, error } = useFetchApi();
+
+  const dispatch = useDispatch();
 
   if (isLoading) {
     return (
@@ -24,6 +29,12 @@ export const Cards = ({ products = [], searchQuery }) => {
     );
   }
 
+  const setIsVisited = (product) => {
+    console.log("ho clickato il prodotto:", product);
+
+    dispatch(addVisited(product));
+  };
+
   console.log(products);
 
   return (
@@ -40,6 +51,7 @@ export const Cards = ({ products = [], searchQuery }) => {
                 <div
                   onMouseEnter={() => setHoveredProductId(product.id)}
                   onMouseLeave={() => setHoveredProductId(null)}
+                  onClick={() => setIsVisited(product)}
                 >
                   <div>
                     <h3
@@ -89,6 +101,8 @@ export const Cards = ({ products = [], searchQuery }) => {
           </div>
         )}
       </div>
+
+      <ProductCarousel />
     </>
   );
 };

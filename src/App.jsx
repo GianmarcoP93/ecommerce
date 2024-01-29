@@ -8,6 +8,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { ProductsDetails } from "./Components/ProductsDetails";
 import { Register } from "./Components/Register";
 import { Login } from "./Components/Login";
+import { ProductCarousel } from "./Components/ProductCarousel";
 
 function App() {
   useFetchApi();
@@ -43,6 +44,7 @@ function App() {
         />
         <Route path="/product/:title" element={<ProductsDetails />} />
       </Routes>
+
       {showNavbarAndFooter && <Footer />}
     </div>
   );
